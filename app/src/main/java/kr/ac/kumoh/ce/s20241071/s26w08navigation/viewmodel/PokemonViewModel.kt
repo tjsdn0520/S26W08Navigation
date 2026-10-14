@@ -1,6 +1,8 @@
 package kr.ac.kumoh.ce.s20241071.s26w08navigation.viewmodel
 
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kr.ac.kumoh.ce.s20241071.s26w08navigation.model.Pokemon
 
 
@@ -12,7 +14,8 @@ private val pokemons = listOf(
 )
 
 class PokemonListViewModel : ViewModel() {
-    val pokemonList = pokemons
+    private val _pokemonList = MutableStateFlow<List<Pokemon>>(pokemons)
+    val pokemonList = _pokemonList.asStateFlow()
 }
 
 class PokemonDetailViewModel : ViewModel() {
